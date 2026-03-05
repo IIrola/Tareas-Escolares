@@ -10,7 +10,7 @@ dotenv.config();
  * REGISTRO
  * ==============================
  */
-exports.register = async (req: any, res: any) => {
+export const register = async (req: any, res: any) => {
 
   if (!req.body) {
     return res.status(400).json({ error: 'Body requerido en formato JSON' });
@@ -56,7 +56,7 @@ exports.register = async (req: any, res: any) => {
  * LOGIN CON JWT
  * ==============================
  */
-exports.login = async (req: any, res: any) => {
+export const login = async (req: any, res: any) => {
 const { correo, password } = req.body;
 
   if (!correo || !password) {
@@ -114,12 +114,3 @@ const { correo, password } = req.body;
     res.status(500).json({ error: error.message });
   }
 };
-
-export function register(arg0: string, register: any) {
-    throw new Error('Function not implemented.');
-}
-
-
-export function login(arg0: string, register: any) {
-    throw new Error('Function not implemented.');
-}
