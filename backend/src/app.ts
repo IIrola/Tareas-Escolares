@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.routes';
+import periodRoutes from './routes/periodos.routes';
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 
 // Rutas
 app.use('/api/auth', authRoutes);
+app.use('/api/periodos', periodRoutes);
 //app.use('/api/periodos', require('./routes/periodos.routes'));
 //app.use('/api/materias', require('./routes/materias.routes'));
 //app.use('/api/horarios', require('./routes/horarios.routes'));

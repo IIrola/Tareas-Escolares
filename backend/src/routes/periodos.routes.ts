@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', mid.verificarToken, (req: any, res: any) => {
   res.json({
     message: 'Ruta protegida',
-    usuario: req.usuario
+    usuario: req.usuario    
   });
 });
 
