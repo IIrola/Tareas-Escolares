@@ -15,7 +15,6 @@ app.use(express.json());
 // Rutas
 app.use('/api/auth', authRoutes);
 app.use('/api/periodos', periodRoutes);
-//app.use('/api/periodos', require('./routes/periodos.routes'));
 //app.use('/api/materias', require('./routes/materias.routes'));
 //app.use('/api/horarios', require('./routes/horarios.routes'));
 //app.use('/api/tareas', require('./routes/tareas.routes'));
