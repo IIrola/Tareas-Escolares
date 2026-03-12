@@ -77,4 +77,6 @@ npm run dev
 ---
 
 > [!NOTE]
-> Este archivo fue generado siguiendo las especificaciones de diseño y contenido detalladas en la bitácora de desarrollo del proyecto.
+> Universidad Politecnica de Bacalar
+> Jose Angel Irola Canto 
+> 12-03-2026
