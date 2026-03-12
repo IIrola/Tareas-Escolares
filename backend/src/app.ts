@@ -3,6 +3,9 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.routes';
 import periodRoutes from './routes/periodos.routes';
+import materiasRoutes from './routes/materias.routes';
+import tareasRoutes from './routes/tareas.routes';
+import horariosRoutes from './routes/horarios.routes';
 
 dotenv.config();
 
@@ -15,9 +18,9 @@ app.use(express.json());
 // Rutas
 app.use('/api/auth', authRoutes);
 app.use('/api/periodos', periodRoutes);
-//app.use('/api/materias', require('./routes/materias.routes'));
-//app.use('/api/horarios', require('./routes/horarios.routes'));
-//app.use('/api/tareas', require('./routes/tareas.routes'));
+app.use('/api/materias', materiasRoutes);
+app.use('/api/tareas', tareasRoutes);
+app.use('/api/horarios', horariosRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "npx tsx watch src/app.js"
+    "dev": "npx tsx watch src/app.ts"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",

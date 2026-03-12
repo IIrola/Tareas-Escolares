@@ -1,19 +1,20 @@
 import { Router } from 'express';
-import * as controller from '../controllers/materias.controller';
 import { verificarToken } from '../middleware/middleware';
+import * as controller from '../controllers/materias.controller';
 
-export const router = Router();
+const router = Router();
 
+// Crear materia
 router.post('/', verificarToken, controller.crearMateria);
 
-// Listar todas las materias
+// Listar todas las materias (del usuario)
 router.get('/', verificarToken, controller.obtenerTodasLasMaterias);
 
 // Listar materias por periodo
-router.get('/:id_periodo', verificarToken, controller.obtenerMateriasPorPeriodo);
+router.get('/periodo/:id_periodo', verificarToken, controller.obtenerMateriasPorPeriodo);
 
 // Obtener detalle de una materia
-router.get('/detalle/:id', verificarToken, controller.obtenerMateriaPorId);
+router.get('/:id', verificarToken, controller.obtenerMateriaPorId);
 
 // Actualizar materia
 router.put('/:id', verificarToken, controller.actualizarMateria);
