@@ -57,7 +57,7 @@ export const register = async (req: any, res: any) => {
  * ==============================
  */
 export const login = async (req: any, res: any) => {
-const { correo, password } = req.body;
+  const { correo, password } = req.body;
 
   if (!correo || !password) {
     return res.status(400).json({
@@ -94,7 +94,7 @@ const { correo, password } = req.body;
         id_usuario: usuario.id_usuario,
         correo: usuario.correo
       },
-        process.env.JWT_SECRET as string,
+      process.env.JWT_SECRET as string,
       {
         expiresIn: '2h'
       }
