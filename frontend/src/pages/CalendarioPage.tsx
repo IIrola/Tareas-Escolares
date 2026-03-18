@@ -54,11 +54,13 @@ export default function CalendarioPage() {
   const { data: horarios = [] } = useQuery<Horario[]>({
     queryKey: ['horarios'],
     queryFn: async () => (await apiClient.get('/horarios')).data,
+    staleTime: 0, // Always refetch when mounting this page
   });
 
   const { data: tareas = [] } = useQuery<Tarea[]>({
     queryKey: ['tareas'],
     queryFn: async () => (await apiClient.get('/tareas')).data,
+    staleTime: 0,
   });
 
   const { data: materias = [] } = useQuery<Materia[]>({

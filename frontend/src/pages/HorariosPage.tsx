@@ -48,8 +48,8 @@ export default function HorariosPage() {
   });
 
   const updateMutation = useMutation({
-    mutationFn: (data: { dia_semana: string; hora_inicio: string; hora_fin: string; id: number }) =>
-      apiClient.put(`/horarios/${data.id}`, { dia_semana: data.dia_semana, hora_inicio: data.hora_inicio, hora_fin: data.hora_fin }),
+    mutationFn: (data: { dia_semana: string; hora_inicio: string; hora_fin: string; id_materia: number; id: number }) =>
+      apiClient.put(`/horarios/${data.id}`, { dia_semana: data.dia_semana, hora_inicio: data.hora_inicio, hora_fin: data.hora_fin, id_materia: data.id_materia }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['horarios'] });
       toast.success('Horario actualizado');
@@ -84,7 +84,7 @@ export default function HorariosPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (editing) {
-      updateMutation.mutate({ dia_semana: form.dia_semana, hora_inicio: form.hora_inicio, hora_fin: form.hora_fin, id: editing.id_horario });
+      updateMutation.mutate({ dia_semana: form.dia_semana, hora_inicio: form.hora_inicio, hora_fin: form.hora_fin, id_materia: form.id_materia, id: editing.id_horario });
     } else {
       createMutation.mutate(form);
     }
@@ -185,17 +185,15 @@ export default function HorariosPage() {
                 <Input type="time" className="glass-input text-white border-0" value={form.hora_fin} onChange={(e) => setForm({ ...form, hora_fin: e.target.value })} required />
               </div>
             </div>
-            {!editing && (
-              <div className="space-y-2">
-                <Label className="text-white/70">Materia</Label>
-                <select className="flex h-10 w-full rounded-md glass-input text-white px-3 py-2 text-sm" value={form.id_materia} onChange={(e) => setForm({ ...form, id_materia: Number(e.target.value) })} required>
-                  <option value={0} disabled>Seleccionar materia</option>
-                  {materias.map((m) => (
-                    <option key={m.id_materia} value={m.id_materia}>{m.nombre}</option>
-                  ))}
-                </select>
-              </div>
-            )}
+            <div className="space-y-2">
+              <Label className="text-white/70">Materia</Label>
+              <select className="flex h-10 w-full rounded-md glass-input text-white px-3 py-2 text-sm" value={form.id_materia} onChange={(e) => setForm({ ...form, id_materia: Number(e.target.value) })} required>
+                <option value={0} disabled>Seleccionar materia</option>
+                {materias.map((m) => (
+                  <option key={m.id_materia} value={m.id_materia}>{m.nombre}</option>
+                ))}
+              </select>
+            </div>
             <DialogFooter>
               <Button type="button" variant="ghost" onClick={closeDialog} className="text-white/50">Cancelar</Button>
               <Button type="submit" className="glass-button text-white">{editing ? 'Guardar' : 'Crear Horario'}</Button>
