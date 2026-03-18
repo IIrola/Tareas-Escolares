@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import apiClient from '@/api/apiClient';
 import type { User, LoginRequest, RegisterRequest, LoginResponse } from '@/types';
 
@@ -14,6 +15,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
+  const queryClient = useQueryClient();
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -30,16 +32,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         
         if (Date.now() >= expTime) {
           // Token expired -> clean up
-          localStorage.removeItem('token');
-          localStorage.removeItem('user');
+          localStorage.clear();
+          sessionStorage.clear();
         } else {
           setToken(savedToken);
           setUser(JSON.parse(savedUser));
         }
       } catch (e) {
         // Invalid token format
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        localStorage.clear();
+        sessionStorage.clear();
       }
     }
     setIsLoading(false);
@@ -59,8 +61,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.clear();
+    sessionStorage.clear();
+    queryClient.clear();
     setToken(null);
     setUser(null);
   };
