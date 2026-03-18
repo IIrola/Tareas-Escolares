@@ -179,17 +179,17 @@ export default function CalendarioPage() {
       {/* Navigation */}
       <div className="flex items-center gap-3">
         <div className="flex items-center glass rounded-xl overflow-hidden">
-          <button onClick={() => onNavigate('PREV')} className="px-3 py-2.5 text-white/50 hover:text-white hover:bg-white/10 transition-all">
+          <button onClick={() => onNavigate('PREV')} className="px-3 py-2.5 text-foreground/50 hover:text-foreground hover:bg-foreground/10 transition-all">
             <ChevronLeft className="w-4 h-4" />
           </button>
-          <button onClick={() => onNavigate('TODAY')} className="px-4 py-2.5 text-white/60 hover:text-white hover:bg-white/10 transition-all text-sm font-medium border-x border-white/6">
+          <button onClick={() => onNavigate('TODAY')} className="px-4 py-2.5 text-foreground/60 hover:text-foreground hover:bg-foreground/10 transition-all text-sm font-medium border-x border-foreground/6">
             Hoy
           </button>
-          <button onClick={() => onNavigate('NEXT')} className="px-3 py-2.5 text-white/50 hover:text-white hover:bg-white/10 transition-all">
+          <button onClick={() => onNavigate('NEXT')} className="px-3 py-2.5 text-foreground/50 hover:text-foreground hover:bg-foreground/10 transition-all">
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
-        <h3 className="text-white font-semibold text-lg capitalize">{label}</h3>
+        <h3 className="text-foreground font-semibold text-lg capitalize">{label}</h3>
       </div>
 
       {/* View Switcher */}
@@ -205,7 +205,7 @@ export default function CalendarioPage() {
             className={`px-4 py-2.5 text-sm font-medium transition-all ${
               currentView === v.key
                 ? 'bg-purple-500/20 text-purple-300'
-                : 'text-white/40 hover:text-white/70 hover:bg-white/5'
+                : 'text-foreground/40 hover:text-foreground/70 hover:bg-foreground/5'
             }`}
           >
             {v.label}
@@ -225,7 +225,7 @@ export default function CalendarioPage() {
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setSelectedEvent(null)}>
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
         <div className="glass-card rounded-2xl p-6 w-full max-w-sm relative z-10 animate-fade-in" onClick={(e) => e.stopPropagation()}>
-          <button onClick={() => setSelectedEvent(null)} className="absolute top-4 right-4 text-white/30 hover:text-white/60 transition-colors">
+          <button onClick={() => setSelectedEvent(null)} className="absolute top-4 right-4 text-foreground/30 hover:text-foreground/60 transition-colors">
             <X className="w-4 h-4" />
           </button>
 
@@ -234,45 +234,45 @@ export default function CalendarioPage() {
               {isHorario ? <BookOpen className="w-5 h-5 text-purple-400" /> : <ClipboardList className="w-5 h-5 text-amber-400" />}
             </div>
             <div>
-              <p className="text-xs text-white/40 uppercase tracking-wider">{isHorario ? 'Clase' : 'Tarea'}</p>
-              <h3 className="text-white font-semibold">{selectedEvent.title}</h3>
+              <p className="text-xs text-foreground/40 uppercase tracking-wider">{isHorario ? 'Clase' : 'Tarea'}</p>
+              <h3 className="text-foreground font-semibold">{selectedEvent.title}</h3>
             </div>
           </div>
 
           <div className="space-y-3 text-sm">
             {m.materia && (
               <div className="flex justify-between">
-                <span className="text-white/40">Materia</span>
+                <span className="text-foreground/40">Materia</span>
                 <span className="text-purple-400 font-medium">{m.materia}</span>
               </div>
             )}
             {isHorario && m.dia && (
               <div className="flex justify-between">
-                <span className="text-white/40">Día</span>
-                <span className="text-white/70">{m.dia}</span>
+                <span className="text-foreground/40">Día</span>
+                <span className="text-foreground/70">{m.dia}</span>
               </div>
             )}
             {isHorario && m.hora && (
               <div className="flex justify-between">
-                <span className="text-white/40">Horario</span>
-                <span className="text-white/70">{m.hora}</span>
+                <span className="text-foreground/40">Horario</span>
+                <span className="text-foreground/70">{m.hora}</span>
               </div>
             )}
             {!isHorario && m.entrega && (
               <div className="flex justify-between">
-                <span className="text-white/40">Fecha de entrega</span>
-                <span className="text-white/70 capitalize">{m.entrega}</span>
+                <span className="text-foreground/40">Fecha de entrega</span>
+                <span className="text-foreground/70 capitalize">{m.entrega}</span>
               </div>
             )}
             {!isHorario && m.descripcion && (
               <div>
-                <span className="text-white/40 block mb-1">Descripción</span>
-                <p className="text-white/60 text-xs leading-relaxed">{m.descripcion}</p>
+                <span className="text-foreground/40 block mb-1">Descripción</span>
+                <p className="text-foreground/60 text-xs leading-relaxed">{m.descripcion}</p>
               </div>
             )}
             {!isHorario && (
               <div className="flex justify-between">
-                <span className="text-white/40">Estado</span>
+                <span className="text-foreground/40">Estado</span>
                 <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${m.completada ? 'bg-green-400/10 text-green-400' : 'bg-amber-400/10 text-amber-400'}`}>
                   {m.completada ? 'Completada' : 'Pendiente'}
                 </span>
@@ -294,11 +294,11 @@ export default function CalendarioPage() {
       {/* Header */}
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/25">
-          <CalendarDays className="w-5 h-5 text-white" />
+          <CalendarDays className="w-5 h-5 text-foreground" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-white">Calendario</h2>
-          <p className="text-white/40 text-sm">Visualiza tus horarios de clase y entregas</p>
+          <h2 className="text-2xl font-bold text-foreground">Calendario</h2>
+          <p className="text-foreground/40 text-sm">Visualiza tus horarios de clase y entregas</p>
         </div>
       </div>
 
@@ -309,8 +309,8 @@ export default function CalendarioPage() {
             <BookOpen className="w-4 h-4 text-purple-400" />
           </div>
           <div>
-            <p className="text-white font-semibold text-lg">{totalHorarios}</p>
-            <p className="text-white/30 text-xs">Bloques de clase</p>
+            <p className="text-foreground font-semibold text-lg">{totalHorarios}</p>
+            <p className="text-foreground/30 text-xs">Bloques de clase</p>
           </div>
         </div>
         <div className="glass-card rounded-xl p-4 flex items-center gap-3">
@@ -318,8 +318,8 @@ export default function CalendarioPage() {
             <ClipboardList className="w-4 h-4 text-amber-400" />
           </div>
           <div>
-            <p className="text-white font-semibold text-lg">{totalTareas}</p>
-            <p className="text-white/30 text-xs">Tareas totales</p>
+            <p className="text-foreground font-semibold text-lg">{totalTareas}</p>
+            <p className="text-foreground/30 text-xs">Tareas totales</p>
           </div>
         </div>
         <div className="glass-card rounded-xl p-4 flex items-center gap-3">
@@ -327,8 +327,8 @@ export default function CalendarioPage() {
             <ClipboardList className="w-4 h-4 text-rose-400" />
           </div>
           <div>
-            <p className="text-white font-semibold text-lg">{tareasPendientes}</p>
-            <p className="text-white/30 text-xs">Pendientes</p>
+            <p className="text-foreground font-semibold text-lg">{tareasPendientes}</p>
+            <p className="text-foreground/30 text-xs">Pendientes</p>
           </div>
         </div>
       </div>
@@ -337,51 +337,51 @@ export default function CalendarioPage() {
       <div className="flex items-center gap-6 px-1">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-purple-500" />
-          <span className="text-white/40 text-xs">Clases</span>
+          <span className="text-foreground/40 text-xs">Clases</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-amber-500" />
-          <span className="text-white/40 text-xs">Tareas pendientes</span>
+          <span className="text-foreground/40 text-xs">Tareas pendientes</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-emerald-500" />
-          <span className="text-white/40 text-xs">Tareas completadas</span>
+          <span className="text-foreground/40 text-xs">Tareas completadas</span>
         </div>
       </div>
 
       {/* Calendar */}
-      <div className="glass-card rounded-2xl p-5 overflow-hidden calendar-dark">
+      <div className="glass-card rounded-2xl p-5 overflow-hidden calendar-theme">
         <style>{`
-          .calendar-dark .rbc-calendar { color: rgba(255,255,255,0.8); font-family: 'Inter', system-ui, sans-serif; }
-          .calendar-dark .rbc-toolbar { display: none; }
-          .calendar-dark .rbc-header { color: rgba(255,255,255,0.5); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 10px 0; font-weight: 500; font-size: 13px; text-transform: capitalize; }
-          .calendar-dark .rbc-today { background: rgba(139,92,246,0.06); }
-          .calendar-dark .rbc-off-range-bg { background: rgba(0,0,0,0.15); }
-          .calendar-dark .rbc-off-range { color: rgba(255,255,255,0.15); }
-          .calendar-dark .rbc-day-bg + .rbc-day-bg,
-          .calendar-dark .rbc-month-row + .rbc-month-row,
-          .calendar-dark .rbc-time-content > * + * > * { border-color: rgba(255,255,255,0.04); }
-          .calendar-dark .rbc-timeslot-group { border-color: rgba(255,255,255,0.04); min-height: 50px; }
-          .calendar-dark .rbc-time-slot { border-color: rgba(255,255,255,0.02); }
-          .calendar-dark .rbc-time-header-content { border-color: rgba(255,255,255,0.06); }
-          .calendar-dark .rbc-time-view { border-color: rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; }
-          .calendar-dark .rbc-time-header { border-bottom: 1px solid rgba(255,255,255,0.06); }
-          .calendar-dark .rbc-label { color: rgba(255,255,255,0.25); font-size: 11px; padding: 0 8px; }
-          .calendar-dark .rbc-event { border-radius: 8px; padding: 3px 8px; font-size: 12px; font-weight: 500; border: none !important; box-shadow: 0 2px 8px rgba(0,0,0,0.3); cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
-          .calendar-dark .rbc-event:hover { transform: scale(1.02); box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
-          .calendar-dark .rbc-month-view { border-color: rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; }
-          .calendar-dark .rbc-month-view .rbc-header { background: rgba(255,255,255,0.02); }
-          .calendar-dark .rbc-date-cell { color: rgba(255,255,255,0.5); padding: 4px 8px; font-size: 13px; }
-          .calendar-dark .rbc-date-cell.rbc-now { font-weight: 700; }
-          .calendar-dark .rbc-date-cell.rbc-now > a { color: #a78bfa; }
-          .calendar-dark .rbc-show-more { color: rgba(167,139,250,0.8); font-size: 11px; font-weight: 500; }
-          .calendar-dark .rbc-day-slot .rbc-time-slot { border-top: 1px solid rgba(255,255,255,0.02); }
-          .calendar-dark .rbc-current-time-indicator { background: #a78bfa; height: 2px; }
-          .calendar-dark .rbc-allday-cell { display: none; }
-          .calendar-dark .rbc-time-header-cell .rbc-header { border-left: 1px solid rgba(255,255,255,0.04); }
-          .calendar-dark .rbc-time-header-gutter { border-right: 1px solid rgba(255,255,255,0.06); }
-          .calendar-dark .rbc-day-slot .rbc-event-label { font-size: 10px; color: rgba(255,255,255,0.7); }
-          .calendar-dark .rbc-row-segment { padding: 0 2px 1px 2px; }
+          .calendar-theme .rbc-calendar { color: hsl(var(--foreground) / 0.8); font-family: 'Inter', system-ui, sans-serif; }
+          .calendar-theme .rbc-toolbar { display: none; }
+          .calendar-theme .rbc-header { color: hsl(var(--foreground) / 0.6); border-bottom: 1px solid hsl(var(--foreground) / 0.1); padding: 10px 0; font-weight: 500; font-size: 13px; text-transform: capitalize; }
+          .calendar-theme .rbc-today { background: rgba(139,92,246,0.08); }
+          .calendar-theme .rbc-off-range-bg { background: hsl(var(--foreground) / 0.05); }
+          .calendar-theme .rbc-off-range { color: hsl(var(--foreground) / 0.25); }
+          .calendar-theme .rbc-day-bg + .rbc-day-bg,
+          .calendar-theme .rbc-month-row + .rbc-month-row,
+          .calendar-theme .rbc-time-content > * + * > * { border-color: hsl(var(--foreground) / 0.06); }
+          .calendar-theme .rbc-timeslot-group { border-color: hsl(var(--foreground) / 0.06); min-height: 50px; }
+          .calendar-theme .rbc-time-slot { border-color: hsl(var(--foreground) / 0.03); }
+          .calendar-theme .rbc-time-header-content { border-color: hsl(var(--foreground) / 0.08); }
+          .calendar-theme .rbc-time-view { border-color: hsl(var(--foreground) / 0.08); border-radius: 12px; overflow: hidden; }
+          .calendar-theme .rbc-time-header { border-bottom: 1px solid hsl(var(--foreground) / 0.08); }
+          .calendar-theme .rbc-label { color: hsl(var(--foreground) / 0.4); font-size: 11px; padding: 0 8px; }
+          .calendar-theme .rbc-event { border-radius: 8px; padding: 3px 8px; font-size: 12px; font-weight: 500; border: none !important; box-shadow: 0 2px 8px var(--glass-shadow); cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; color: white; }
+          .calendar-theme .rbc-event:hover { transform: scale(1.02); box-shadow: 0 4px 16px var(--glass-shadow); }
+          .calendar-theme .rbc-month-view { border-color: hsl(var(--foreground) / 0.08); border-radius: 12px; overflow: hidden; }
+          .calendar-theme .rbc-month-view .rbc-header { background: hsl(var(--foreground) / 0.03); }
+          .calendar-theme .rbc-date-cell { color: hsl(var(--foreground) / 0.6); padding: 4px 8px; font-size: 13px; }
+          .calendar-theme .rbc-date-cell.rbc-now { font-weight: 700; }
+          .calendar-theme .rbc-date-cell.rbc-now > a { color: #a78bfa; }
+          .calendar-theme .rbc-show-more { color: rgba(167,139,250,0.9); font-size: 11px; font-weight: 600; }
+          .calendar-theme .rbc-day-slot .rbc-time-slot { border-top: 1px solid hsl(var(--foreground) / 0.03); }
+          .calendar-theme .rbc-current-time-indicator { background: #a78bfa; height: 2px; }
+          .calendar-theme .rbc-allday-cell { display: none; }
+          .calendar-theme .rbc-time-header-cell .rbc-header { border-left: 1px solid hsl(var(--foreground) / 0.06); }
+          .calendar-theme .rbc-time-header-gutter { border-right: 1px solid hsl(var(--foreground) / 0.08); }
+          .calendar-theme .rbc-day-slot .rbc-event-label { font-size: 10px; color: rgba(255,255,255,0.85); }
+          .calendar-theme .rbc-row-segment { padding: 0 2px 1px 2px; }
         `}</style>
 
         <CustomToolbar

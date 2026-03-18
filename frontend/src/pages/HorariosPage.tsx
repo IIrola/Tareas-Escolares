@@ -101,14 +101,14 @@ export default function HorariosPage() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-rose-500 rounded-xl flex items-center justify-center">
-            <CalendarClock className="w-5 h-5 text-white" />
+            <CalendarClock className="w-5 h-5 text-foreground" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white">Horarios</h2>
-            <p className="text-white/40 text-sm">Configura tu horario semanal de clases</p>
+            <h2 className="text-2xl font-bold text-foreground">Horarios</h2>
+            <p className="text-foreground/40 text-sm">Configura tu horario semanal de clases</p>
           </div>
         </div>
-        <Button onClick={openCreate} className="glass-button text-white rounded-xl gap-2">
+        <Button onClick={openCreate} className="glass-button text-foreground rounded-xl gap-2">
           <Plus className="w-4 h-4" /> Nuevo Horario
         </Button>
       </div>
@@ -118,7 +118,7 @@ export default function HorariosPage() {
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-400" />
         </div>
       ) : horarios.length === 0 ? (
-        <div className="glass-card rounded-2xl text-center py-16 text-white/40">
+        <div className="glass-card rounded-2xl text-center py-16 text-foreground/40">
           <CalendarClock className="w-12 h-12 mx-auto mb-3 opacity-30" />
           <p>No hay horarios registrados</p>
           <p className="text-sm mt-1">Agrega tus bloques de clase</p>
@@ -127,28 +127,28 @@ export default function HorariosPage() {
         <div className="glass-card rounded-2xl overflow-hidden">
           <Table>
             <TableHeader>
-              <TableRow className="border-white/6 hover:bg-white/5">
-                <TableHead className="text-white/50">Día</TableHead>
-                <TableHead className="text-white/50">Hora Inicio</TableHead>
-                <TableHead className="text-white/50">Hora Fin</TableHead>
-                <TableHead className="text-white/50">Materia</TableHead>
-                <TableHead className="text-white/50 text-right">Acciones</TableHead>
+              <TableRow className="border-foreground/6 hover:bg-foreground/5">
+                <TableHead className="text-foreground/50">Día</TableHead>
+                <TableHead className="text-foreground/50">Hora Inicio</TableHead>
+                <TableHead className="text-foreground/50">Hora Fin</TableHead>
+                <TableHead className="text-foreground/50">Materia</TableHead>
+                <TableHead className="text-foreground/50 text-right">Acciones</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {DIAS.map((dia) =>
                 grouped[dia]?.map((h) => (
-                  <TableRow key={h.id_horario} className="border-white/6 hover:bg-white/5">
-                    <TableCell className="text-white font-medium">{DIA_LABELS[h.dia_semana.trim()] || h.dia_semana}</TableCell>
-                    <TableCell className="text-white/60">{h.hora_inicio}</TableCell>
-                    <TableCell className="text-white/60">{h.hora_fin}</TableCell>
+                  <TableRow key={h.id_horario} className="border-foreground/6 hover:bg-foreground/5">
+                    <TableCell className="text-foreground font-medium">{DIA_LABELS[h.dia_semana.trim()] || h.dia_semana}</TableCell>
+                    <TableCell className="text-foreground/60">{h.hora_inicio}</TableCell>
+                    <TableCell className="text-foreground/60">{h.hora_fin}</TableCell>
                     <TableCell className="text-purple-400/80">{h.materia || '—'}</TableCell>
                     <TableCell className="text-right">
                       <div className="flex justify-end gap-2">
-                        <button onClick={() => openEdit(h)} className="p-2 rounded-lg text-white/40 hover:text-blue-400 hover:bg-blue-400/10 transition-all">
+                        <button onClick={() => openEdit(h)} className="p-2 rounded-lg text-foreground/40 hover:text-blue-400 hover:bg-blue-400/10 transition-all">
                           <Pencil className="w-4 h-4" />
                         </button>
-                        <button onClick={() => deleteMutation.mutate(h.id_horario)} className="p-2 rounded-lg text-white/40 hover:text-red-400 hover:bg-red-400/10 transition-all">
+                        <button onClick={() => deleteMutation.mutate(h.id_horario)} className="p-2 rounded-lg text-foreground/40 hover:text-red-400 hover:bg-red-400/10 transition-all">
                           <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
@@ -162,14 +162,14 @@ export default function HorariosPage() {
       )}
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="glass-card border-white/10 text-white sm:rounded-2xl">
+        <DialogContent className="glass-card border-foreground/10 text-foreground sm:rounded-2xl">
           <DialogHeader>
             <DialogTitle>{editing ? 'Editar Horario' : 'Nuevo Horario'}</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label className="text-white/70">Día de la semana</Label>
-              <select className="flex h-10 w-full rounded-md glass-input text-white px-3 py-2 text-sm" value={form.dia_semana} onChange={(e) => setForm({ ...form, dia_semana: e.target.value })} required>
+              <Label className="text-foreground/70">Día de la semana</Label>
+              <select className="flex h-10 w-full rounded-md glass-input text-foreground px-3 py-2 text-sm" value={form.dia_semana} onChange={(e) => setForm({ ...form, dia_semana: e.target.value })} required>
                 {DIAS.map((d) => (
                   <option key={d} value={d}>{DIA_LABELS[d] || d}</option>
                 ))}
@@ -177,17 +177,17 @@ export default function HorariosPage() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label className="text-white/70">Hora Inicio</Label>
-                <Input type="time" className="glass-input text-white border-0" value={form.hora_inicio} onChange={(e) => setForm({ ...form, hora_inicio: e.target.value })} required />
+                <Label className="text-foreground/70">Hora Inicio</Label>
+                <Input type="time" className="glass-input text-foreground border-0" value={form.hora_inicio} onChange={(e) => setForm({ ...form, hora_inicio: e.target.value })} required />
               </div>
               <div className="space-y-2">
-                <Label className="text-white/70">Hora Fin</Label>
-                <Input type="time" className="glass-input text-white border-0" value={form.hora_fin} onChange={(e) => setForm({ ...form, hora_fin: e.target.value })} required />
+                <Label className="text-foreground/70">Hora Fin</Label>
+                <Input type="time" className="glass-input text-foreground border-0" value={form.hora_fin} onChange={(e) => setForm({ ...form, hora_fin: e.target.value })} required />
               </div>
             </div>
             <div className="space-y-2">
-              <Label className="text-white/70">Materia</Label>
-              <select className="flex h-10 w-full rounded-md glass-input text-white px-3 py-2 text-sm" value={form.id_materia} onChange={(e) => setForm({ ...form, id_materia: Number(e.target.value) })} required>
+              <Label className="text-foreground/70">Materia</Label>
+              <select className="flex h-10 w-full rounded-md glass-input text-foreground px-3 py-2 text-sm" value={form.id_materia} onChange={(e) => setForm({ ...form, id_materia: Number(e.target.value) })} required>
                 <option value={0} disabled>Seleccionar materia</option>
                 {materias.map((m) => (
                   <option key={m.id_materia} value={m.id_materia}>{m.nombre}</option>
@@ -195,8 +195,8 @@ export default function HorariosPage() {
               </select>
             </div>
             <DialogFooter>
-              <Button type="button" variant="ghost" onClick={closeDialog} className="text-white/50">Cancelar</Button>
-              <Button type="submit" className="glass-button text-white">{editing ? 'Guardar' : 'Crear Horario'}</Button>
+              <Button type="button" variant="ghost" onClick={closeDialog} className="text-foreground/50">Cancelar</Button>
+              <Button type="submit" className="glass-button text-foreground">{editing ? 'Guardar' : 'Crear Horario'}</Button>
             </DialogFooter>
           </form>
         </DialogContent>

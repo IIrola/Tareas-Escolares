@@ -103,14 +103,14 @@ export default function PeriodosPage() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center">
-            <Timer className="w-5 h-5 text-white" />
+            <Timer className="w-5 h-5 text-foreground" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white">Periodos Académicos</h2>
-            <p className="text-white/40 text-sm">Gestiona tus ciclos escolares</p>
+            <h2 className="text-2xl font-bold text-foreground">Periodos Académicos</h2>
+            <p className="text-foreground/40 text-sm">Gestiona tus ciclos escolares</p>
           </div>
         </div>
-        <Button onClick={openCreate} className="glass-button text-white rounded-xl gap-2">
+        <Button onClick={openCreate} className="glass-button text-foreground rounded-xl gap-2">
           <Plus className="w-4 h-4" /> Nuevo Periodo
         </Button>
       </div>
@@ -122,7 +122,7 @@ export default function PeriodosPage() {
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-400" />
           </div>
         ) : periodos.length === 0 ? (
-          <div className="text-center py-16 text-white/40">
+          <div className="text-center py-16 text-foreground/40">
             <Timer className="w-12 h-12 mx-auto mb-3 opacity-30" />
             <p>No hay periodos registrados</p>
             <p className="text-sm mt-1">Crea tu primer periodo académico</p>
@@ -130,34 +130,34 @@ export default function PeriodosPage() {
         ) : (
           <Table>
             <TableHeader>
-              <TableRow className="border-white/6 hover:bg-white/5">
-                <TableHead className="text-white/50">Nombre</TableHead>
-                <TableHead className="text-white/50">Fecha Inicio</TableHead>
-                <TableHead className="text-white/50">Fecha Fin</TableHead>
-                <TableHead className="text-white/50 text-right">Acciones</TableHead>
+              <TableRow className="border-foreground/6 hover:bg-foreground/5">
+                <TableHead className="text-foreground/50">Nombre</TableHead>
+                <TableHead className="text-foreground/50">Fecha Inicio</TableHead>
+                <TableHead className="text-foreground/50">Fecha Fin</TableHead>
+                <TableHead className="text-foreground/50 text-right">Acciones</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {periodos.map((p) => (
-                <TableRow key={p.id_periodo} className="border-white/6 hover:bg-white/5">
-                  <TableCell className="text-white font-medium">{p.nombre}</TableCell>
-                  <TableCell className="text-white/60">
+                <TableRow key={p.id_periodo} className="border-foreground/6 hover:bg-foreground/5">
+                  <TableCell className="text-foreground font-medium">{p.nombre}</TableCell>
+                  <TableCell className="text-foreground/60">
                     {new Date(p.fecha_inicio).toLocaleDateString('es-ES')}
                   </TableCell>
-                  <TableCell className="text-white/60">
+                  <TableCell className="text-foreground/60">
                     {new Date(p.fecha_fin).toLocaleDateString('es-ES')}
                   </TableCell>
                   <TableCell className="text-right">
                     <div className="flex justify-end gap-2">
                       <button
                         onClick={() => openEdit(p)}
-                        className="p-2 rounded-lg text-white/40 hover:text-blue-400 hover:bg-blue-400/10 transition-all"
+                        className="p-2 rounded-lg text-foreground/40 hover:text-blue-400 hover:bg-blue-400/10 transition-all"
                       >
                         <Pencil className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => deleteMutation.mutate(p.id_periodo)}
-                        className="p-2 rounded-lg text-white/40 hover:text-red-400 hover:bg-red-400/10 transition-all"
+                        className="p-2 rounded-lg text-foreground/40 hover:text-red-400 hover:bg-red-400/10 transition-all"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -172,15 +172,15 @@ export default function PeriodosPage() {
 
       {/* Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="glass-card border-white/10 text-white sm:rounded-2xl">
+        <DialogContent className="glass-card border-foreground/10 text-foreground sm:rounded-2xl">
           <DialogHeader>
             <DialogTitle>{editing ? 'Editar Periodo' : 'Nuevo Periodo'}</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label className="text-white/70">Nombre</Label>
+              <Label className="text-foreground/70">Nombre</Label>
               <Input
-                className="glass-input text-white border-0"
+                className="glass-input text-foreground border-0"
                 placeholder="Ej: Semestre 2026-1"
                 value={form.nombre}
                 onChange={(e) => setForm({ ...form, nombre: e.target.value })}
@@ -189,20 +189,20 @@ export default function PeriodosPage() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label className="text-white/70">Fecha Inicio</Label>
+                <Label className="text-foreground/70">Fecha Inicio</Label>
                 <Input
                   type="date"
-                  className="glass-input text-white border-0"
+                  className="glass-input text-foreground border-0"
                   value={form.fecha_inicio}
                   onChange={(e) => setForm({ ...form, fecha_inicio: e.target.value })}
                   required
                 />
               </div>
               <div className="space-y-2">
-                <Label className="text-white/70">Fecha Fin</Label>
+                <Label className="text-foreground/70">Fecha Fin</Label>
                 <Input
                   type="date"
-                  className="glass-input text-white border-0"
+                  className="glass-input text-foreground border-0"
                   value={form.fecha_fin}
                   onChange={(e) => setForm({ ...form, fecha_fin: e.target.value })}
                   required
@@ -210,10 +210,10 @@ export default function PeriodosPage() {
               </div>
             </div>
             <DialogFooter>
-              <Button type="button" variant="ghost" onClick={closeDialog} className="text-white/50">
+              <Button type="button" variant="ghost" onClick={closeDialog} className="text-foreground/50">
                 Cancelar
               </Button>
-              <Button type="submit" className="glass-button text-white">
+              <Button type="submit" className="glass-button text-foreground">
                 {editing ? 'Guardar Cambios' : 'Crear Periodo'}
               </Button>
             </DialogFooter>

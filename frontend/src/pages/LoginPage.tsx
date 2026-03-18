@@ -45,27 +45,27 @@ export default function LoginPage() {
         {/* Logo */}
         <div className="flex flex-col items-center mb-8">
           <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center shadow-2xl shadow-purple-500/30 mb-4">
-            <GraduationCap className="w-8 h-8 text-white" />
+            <GraduationCap className="w-8 h-8 text-foreground" />
           </div>
-          <h1 className="text-3xl font-bold text-white tracking-tight glow-text">Scholar</h1>
-          <p className="text-white/40 text-sm mt-1">Academic Management System</p>
+          <h1 className="text-3xl font-bold text-foreground tracking-tight glow-text">Scholar</h1>
+          <p className="text-foreground/40 text-sm mt-1">Academic Management System</p>
         </div>
 
         {/* Card */}
         <div className="glass-card rounded-2xl p-8">
-          <h2 className="text-xl font-semibold text-white mb-1">
+          <h2 className="text-xl font-semibold text-foreground mb-1">
             {isRegister ? 'Crear Cuenta' : 'Iniciar Sesión'}
           </h2>
-          <p className="text-white/40 text-sm mb-6">
+          <p className="text-foreground/40 text-sm mb-6">
             {isRegister ? 'Completa tus datos para registrarte' : 'Ingresa tus credenciales'}
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             {isRegister && (
               <div className="space-y-2">
-                <Label className="text-white/70 text-sm">Nombre</Label>
+                <Label className="text-foreground/70 text-sm">Nombre</Label>
                 <Input
-                  className="glass-input text-white placeholder:text-white/30 border-0"
+                  className="glass-input text-foreground placeholder:text-foreground/30 border-0"
                   placeholder="Tu nombre completo"
                   value={form.nombre}
                   onChange={(e) => setForm({ ...form, nombre: e.target.value })}
@@ -75,10 +75,10 @@ export default function LoginPage() {
             )}
 
             <div className="space-y-2">
-              <Label className="text-white/70 text-sm">Correo electrónico</Label>
+              <Label className="text-foreground/70 text-sm">Correo electrónico</Label>
               <Input
                 type="email"
-                className="glass-input text-white placeholder:text-white/30 border-0"
+                className="glass-input text-foreground placeholder:text-foreground/30 border-0"
                 placeholder="correo@ejemplo.com"
                 value={form.correo}
                 onChange={(e) => setForm({ ...form, correo: e.target.value })}
@@ -87,11 +87,11 @@ export default function LoginPage() {
             </div>
 
             <div className="space-y-2">
-              <Label className="text-white/70 text-sm">Contraseña</Label>
+              <Label className="text-foreground/70 text-sm">Contraseña</Label>
               <div className="relative">
                 <Input
                   type={showPassword ? 'text' : 'password'}
-                  className="glass-input text-white placeholder:text-white/30 border-0 pr-10"
+                  className="glass-input text-foreground placeholder:text-foreground/30 border-0 pr-10"
                   placeholder="••••••••"
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
@@ -100,7 +100,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30 hover:text-white/60 transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-foreground/30 hover:text-foreground/60 transition-colors"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -110,10 +110,10 @@ export default function LoginPage() {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full glass-button text-white font-medium py-5 rounded-xl mt-2"
+              className="w-full glass-button text-foreground font-medium py-5 rounded-xl mt-2"
             >
               {loading ? (
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-foreground" />
               ) : isRegister ? (
                 'Registrarse'
               ) : (

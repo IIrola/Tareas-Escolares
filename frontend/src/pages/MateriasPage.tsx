@@ -88,14 +88,14 @@ export default function MateriasPage() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
-            <BookOpen className="w-5 h-5 text-white" />
+            <BookOpen className="w-5 h-5 text-foreground" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white">Materias</h2>
-            <p className="text-white/40 text-sm">Gestiona tus asignaturas</p>
+            <h2 className="text-2xl font-bold text-foreground">Materias</h2>
+            <p className="text-foreground/40 text-sm">Gestiona tus asignaturas</p>
           </div>
         </div>
-        <Button onClick={openCreate} className="glass-button text-white rounded-xl gap-2">
+        <Button onClick={openCreate} className="glass-button text-foreground rounded-xl gap-2">
           <Plus className="w-4 h-4" /> Nueva Materia
         </Button>
       </div>
@@ -106,32 +106,32 @@ export default function MateriasPage() {
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-400" />
           </div>
         ) : materias.length === 0 ? (
-          <div className="text-center py-16 text-white/40">
+          <div className="text-center py-16 text-foreground/40">
             <BookOpen className="w-12 h-12 mx-auto mb-3 opacity-30" />
             <p>No hay materias registradas</p>
           </div>
         ) : (
           <Table>
             <TableHeader>
-              <TableRow className="border-white/6 hover:bg-white/5">
-                <TableHead className="text-white/50">Nombre</TableHead>
-                <TableHead className="text-white/50">Profesor</TableHead>
-                <TableHead className="text-white/50">Periodo</TableHead>
-                <TableHead className="text-white/50 text-right">Acciones</TableHead>
+              <TableRow className="border-foreground/6 hover:bg-foreground/5">
+                <TableHead className="text-foreground/50">Nombre</TableHead>
+                <TableHead className="text-foreground/50">Profesor</TableHead>
+                <TableHead className="text-foreground/50">Periodo</TableHead>
+                <TableHead className="text-foreground/50 text-right">Acciones</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {materias.map((m) => (
-                <TableRow key={m.id_materia} className="border-white/6 hover:bg-white/5">
-                  <TableCell className="text-white font-medium">{m.nombre}</TableCell>
-                  <TableCell className="text-white/60">{m.profesor}</TableCell>
-                  <TableCell className="text-white/40 text-sm">{m.periodo || '—'}</TableCell>
+                <TableRow key={m.id_materia} className="border-foreground/6 hover:bg-foreground/5">
+                  <TableCell className="text-foreground font-medium">{m.nombre}</TableCell>
+                  <TableCell className="text-foreground/60">{m.profesor}</TableCell>
+                  <TableCell className="text-foreground/40 text-sm">{m.periodo || '—'}</TableCell>
                   <TableCell className="text-right">
                     <div className="flex justify-end gap-2">
-                      <button onClick={() => openEdit(m)} className="p-2 rounded-lg text-white/40 hover:text-blue-400 hover:bg-blue-400/10 transition-all">
+                      <button onClick={() => openEdit(m)} className="p-2 rounded-lg text-foreground/40 hover:text-blue-400 hover:bg-blue-400/10 transition-all">
                         <Pencil className="w-4 h-4" />
                       </button>
-                      <button onClick={() => deleteMutation.mutate(m.id_materia)} className="p-2 rounded-lg text-white/40 hover:text-red-400 hover:bg-red-400/10 transition-all">
+                      <button onClick={() => deleteMutation.mutate(m.id_materia)} className="p-2 rounded-lg text-foreground/40 hover:text-red-400 hover:bg-red-400/10 transition-all">
                         <Trash2 className="w-4 h-4" />
                       </button>
                     </div>
@@ -144,24 +144,24 @@ export default function MateriasPage() {
       </div>
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="glass-card border-white/10 text-white sm:rounded-2xl">
+        <DialogContent className="glass-card border-foreground/10 text-foreground sm:rounded-2xl">
           <DialogHeader>
             <DialogTitle>{editing ? 'Editar Materia' : 'Nueva Materia'}</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label className="text-white/70">Nombre</Label>
-              <Input className="glass-input text-white border-0" placeholder="Ej: Matemáticas" value={form.nombre} onChange={(e) => setForm({ ...form, nombre: e.target.value })} required />
+              <Label className="text-foreground/70">Nombre</Label>
+              <Input className="glass-input text-foreground border-0" placeholder="Ej: Matemáticas" value={form.nombre} onChange={(e) => setForm({ ...form, nombre: e.target.value })} required />
             </div>
             <div className="space-y-2">
-              <Label className="text-white/70">Profesor</Label>
-              <Input className="glass-input text-white border-0" placeholder="Nombre del profesor" value={form.profesor} onChange={(e) => setForm({ ...form, profesor: e.target.value })} />
+              <Label className="text-foreground/70">Profesor</Label>
+              <Input className="glass-input text-foreground border-0" placeholder="Nombre del profesor" value={form.profesor} onChange={(e) => setForm({ ...form, profesor: e.target.value })} />
             </div>
             {!editing && (
               <div className="space-y-2">
-                <Label className="text-white/70">Periodo</Label>
+                <Label className="text-foreground/70">Periodo</Label>
                 <select
-                  className="flex h-10 w-full rounded-md glass-input text-white px-3 py-2 text-sm"
+                  className="flex h-10 w-full rounded-md glass-input text-foreground px-3 py-2 text-sm"
                   value={form.id_periodo}
                   onChange={(e) => setForm({ ...form, id_periodo: Number(e.target.value) })}
                   required
@@ -174,8 +174,8 @@ export default function MateriasPage() {
               </div>
             )}
             <DialogFooter>
-              <Button type="button" variant="ghost" onClick={closeDialog} className="text-white/50">Cancelar</Button>
-              <Button type="submit" className="glass-button text-white">{editing ? 'Guardar' : 'Crear Materia'}</Button>
+              <Button type="button" variant="ghost" onClick={closeDialog} className="text-foreground/50">Cancelar</Button>
+              <Button type="submit" className="glass-button text-foreground">{editing ? 'Guardar' : 'Crear Materia'}</Button>
             </DialogFooter>
           </form>
         </DialogContent>
