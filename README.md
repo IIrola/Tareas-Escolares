@@ -905,4 +905,7 @@ El **QueryProvider** configura TanStack Query con los siguientes valores:
 
 ---
 
-> Desarrollado con ❤️ como proyecto de servicios académicos.
+
+> Universidad Politecnica de Bacalar
+> Jose Angel Irola Canto 
+> 12-03-2026
